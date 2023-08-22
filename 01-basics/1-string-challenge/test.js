@@ -1,5 +1,7 @@
-// Challenge is to output to the console a word in a variable capitalized
+// Challenge: capitalize a word and output variable to console
 let myString = 'developer';
+
+
 
 // VVV Solutions VVV
 
@@ -13,7 +15,10 @@ myString[0] = myString[0].toUpperCase();
 myString = myString.join('');
 console.log(myString);
 
+
+
 // VVV Answers VVV
+
 myString = 'developer';
 let myNewString;
 
