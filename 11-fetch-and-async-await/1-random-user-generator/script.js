@@ -33,17 +33,26 @@ function displayUser(user) {
   </div>`;
 }
 
-function showSpinner() {
-  document.querySelector('.spinner').style.display = 'block';
-}
-
 function fetchUser() {
   document.querySelector('.spinner').style.display = 'block';
+
   fetch('https://randomuser.me/api')
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Request Failed');
+      }
+
+      return response.json();
+    })
+
     .then((data) => {
       document.querySelector('.spinner').style.display = 'none';
       displayUser(data.results[0]);
+    })
+
+    .catch(error => {
+      document.querySelector('.spinner').style.display = 'none';
+      document.querySelector('#user').innerHTML = `<p class="text-xl text-center text-red-500 mb-5">${error}</p>`;
     });
 }
 
