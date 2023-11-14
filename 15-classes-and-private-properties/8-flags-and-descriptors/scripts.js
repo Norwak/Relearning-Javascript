@@ -17,3 +17,21 @@ const rectObj = {
 
 descriptor = Object.getOwnPropertyDescriptor(rectObj, 'name');
 console.log(descriptor);
+
+Object.defineProperty(rectObj, 'name', {
+  writable: false,
+  configurable: false,
+  enumerable: false
+});
+
+descriptor = Object.getOwnPropertyDescriptor(rectObj, 'name');
+console.log(descriptor);
+
+rectObj.name = 'New name'; // not working now
+delete rectObj.name; // not working now
+
+console.log(rectObj);
+
+for (const [key, value] of Object.entries(rectObj)) {
+  console.log(`${key}: ${value }`);
+}
